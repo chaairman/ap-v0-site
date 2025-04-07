@@ -35,7 +35,7 @@ export default function HomePage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 500)
+    }, 750)
 
     return () => clearTimeout(timer)
   }, [])
@@ -57,7 +57,7 @@ export default function HomePage() {
             className="fixed inset-0 bg-primary z-50 flex items-center justify-center"
             initial={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 1.0, ease: [0.76, 0, 0.24, 1] }}
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -106,7 +106,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
               <span className="inline-block text-sm font-medium text-primary px-6 py-1.5 rounded-none border-l border-primary">
                 LEGAL EXCELLENCE
@@ -116,7 +116,7 @@ export default function HomePage() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.4 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-white max-w-3xl"
             >
               Amara <span className="text-primary">&</span> Partners
@@ -125,7 +125,7 @@ export default function HomePage() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.6 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
               className="text-xl md:text-2xl text-white/90 max-w-2xl font-light text-spacious"
             >
               A modern legal consultancy redefining excellence in Abu Dhabi's legal landscape
@@ -134,7 +134,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.8 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-col sm:flex-row gap-6 mt-8"
             >
               <Button size="lg" className="rounded-none px-10 py-6 bg-primary hover:bg-primary/90 text-base">
@@ -155,7 +155,7 @@ export default function HomePage() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.2, duration: 1 }}
+          transition={{ delay: 1.2, duration: 1 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center"
           style={{ opacity: heroOpacity }}
         >
