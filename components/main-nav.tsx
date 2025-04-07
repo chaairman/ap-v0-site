@@ -1,7 +1,7 @@
+// components/main-nav.tsx
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
@@ -20,7 +20,6 @@ export function MainNav() {
         setScrolled(isScrolled)
       }
     }
-
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [scrolled])
@@ -32,33 +31,24 @@ export function MainNav() {
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5, delay: 1 }}
+      transition={{ duration: 0.5, delay: 1 }} // Delay might have been adjusted by you
     >
-      <div className="container-spacious max-w-7xl mx-auto px-8 md:px-16 pl-24 md:pl-40">
+      {/* ***** PADDING CHANGE HERE ***** */}
+      <div className="container-spacious max-w-7xl mx-auto px-4 sm:px-8 lg:pl-40 lg:pr-8"> {/* Mobile: px-4/8. Desktop: lg:pl-40 lg:pr-8 */}
         <div className="flex items-center justify-end h-20 md:h-24">
+          {/* Desktop navigation (visibility handled later) */}
           <nav className="hidden lg:flex items-center">
             <ul className="flex space-x-12">
-              <li>
-                <NavLink href="/about-us">About us</NavLink>
-              </li>
-              <li>
-                <NavLink href="/services">Services</NavLink>
-              </li>
-              <li>
-                <NavLink href="/team">Our Team</NavLink>
-              </li>
-              <li>
-                <NavLink href="/insights">Insights</NavLink>
-              </li>
-              <li>
-                <NavLink href="/careers">Careers</NavLink>
-              </li>
-              <li>
-                <NavLink href="/contact-us">Contact</NavLink>
-              </li>
+              <li><NavLink href="/about-us">About us</NavLink></li>
+              <li><NavLink href="/services">Services</NavLink></li>
+              <li><NavLink href="/team">Our Team</NavLink></li>
+              <li><NavLink href="/insights">Insights</NavLink></li>
+              <li><NavLink href="/careers">Careers</NavLink></li>
+              <li><NavLink href="/contact-us">Contact</NavLink></li>
             </ul>
           </nav>
 
+          {/* Desktop search (visibility handled later) */}
           <div className="hidden lg:flex items-center ml-12">
             <Button variant="ghost" size="icon" className="text-white">
               <Search className="h-5 w-5" />
@@ -66,44 +56,31 @@ export function MainNav() {
             </Button>
           </div>
 
+          {/* Mobile menu trigger (visibility handled later) */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden text-white">
+              <Button variant="ghost" size="icon" className="lg:hidden text-white"> {/* Placeholder class */}
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-card border-l border-primary/20">
+              {/* Mobile nav content... */}
               <div className="flex flex-col h-full p-8">
                 <div className="flex items-center justify-between py-4">
                   <span className="text-lg font-light tracking-wider text-white">MENU</span>
                 </div>
-
                 <div className="elegant-line w-full my-8" />
-
                 <nav className="flex flex-col py-8">
                   <ul className="space-y-10">
-                    <li>
-                      <MobileNavLink href="/about-us">About us</MobileNavLink>
-                    </li>
-                    <li>
-                      <MobileNavLink href="/services">Services</MobileNavLink>
-                    </li>
-                    <li>
-                      <MobileNavLink href="/team">Our Team</MobileNavLink>
-                    </li>
-                    <li>
-                      <MobileNavLink href="/insights">Insights</MobileNavLink>
-                    </li>
-                    <li>
-                      <MobileNavLink href="/careers">Careers</MobileNavLink>
-                    </li>
-                    <li>
-                      <MobileNavLink href="/contact-us">Contact</MobileNavLink>
-                    </li>
+                    <li><MobileNavLink href="/about-us">About us</MobileNavLink></li>
+                    <li><MobileNavLink href="/services">Services</MobileNavLink></li>
+                    <li><MobileNavLink href="/team">Our Team</MobileNavLink></li>
+                    <li><MobileNavLink href="/insights">Insights</MobileNavLink></li>
+                    <li><MobileNavLink href="/careers">Careers</MobileNavLink></li>
+                    <li><MobileNavLink href="/contact-us">Contact</MobileNavLink></li>
                   </ul>
                 </nav>
-
                 <div className="mt-auto pb-8">
                   <Button className="w-full rounded-none bg-primary hover:bg-primary/90 py-6">Get in Touch</Button>
                 </div>
@@ -116,6 +93,7 @@ export function MainNav() {
   )
 }
 
+// Helper components (NavLink, MobileNavLink) remain the same
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <Link
@@ -137,4 +115,3 @@ function MobileNavLink({ href, children }: { href: string; children: React.React
     </Link>
   )
 }
-
