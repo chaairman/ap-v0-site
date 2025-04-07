@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Lighter backgrounds */
+    --background: 215 30% 25%;
+    --foreground: 0 0% 98%;
+
+    /* Primary: Refined blue */
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary: Sophisticated navy */
+    --secondary: 220 60% 36%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Accent: Light blue */
+    --accent: 210 100% 90%;
+    --accent-foreground: 220 70% 20%;
+
+    /* Lighter muted tones */
+    --muted: 215 30% 30%;
+    --muted-foreground: 215 20% 85%;
+
+    /* Card and popover backgrounds */
+    --card: 215 30% 22%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 215 30% 22%;
+    --popover-foreground: 0 0% 98%;
+
+    --border: 215 30% 35%;
+    --input: 215 30% 35%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 215 30% 50%;
+
+    --radius: 0;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    letter-spacing: 0.01em;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight leading-tight;
+    letter-spacing: -0.02em;
+  }
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+/* Vertical text */
+.text-vertical-rl {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Elegant decorative elements */
+.elegant-line {
+  @apply h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent;
+}
+
+.elegant-border {
+  background-image: linear-gradient(to right, transparent, hsl(var(--primary) / 0.3), transparent);
+  height: 1px;
+}
+
+.elegant-dot {
+  @apply w-1.5 h-1.5 rounded-full bg-primary/80;
+}
+
+/* Section with light background */
+.section-light {
+  @apply bg-white text-neutral-900;
+}
+
+/* Enhanced spacing utilities */
+.spacer-xs {
+  @apply h-8;
+}
+
+.spacer-sm {
+  @apply h-12 md:h-16;
+}
+
+.spacer-md {
+  @apply h-16 md:h-24;
+}
+
+.spacer-lg {
+  @apply h-24 md:h-32;
+}
+
+.spacer-xl {
+  @apply h-32 md:h-40;
+}
+
+/* Container with enhanced padding */
+.container-spacious {
+  @apply container mx-auto px-8 md:px-12 lg:px-16;
+}
+
+/* Text with enhanced line height */
+.text-spacious {
+  @apply leading-relaxed md:leading-loose;
+}
+
+/* Headings with enhanced spacing */
+.heading-spacious {
+  @apply mb-8 md:mb-12;
+}
+
