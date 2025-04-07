@@ -8,7 +8,15 @@ import { motion } from "framer-motion"
 import { Menu, Search } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+// ***** IMPORT CHANGES HERE *****
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription, // Import SheetDescription
+  SheetHeader,      // Import SheetHeader (good practice to wrap title/desc)
+  SheetTitle,       // Import SheetTitle
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
 export function MainNav() {
   const [scrolled, setScrolled] = useState(false)
@@ -33,10 +41,9 @@ export function MainNav() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, delay: 1 }} // Delay might have been adjusted by you
     >
-      {/* ***** PADDING CHANGE HERE ***** */}
-      <div className="container-spacious max-w-7xl mx-auto px-4 sm:px-8 lg:pl-40 lg:pr-8"> {/* Mobile: px-4/8. Desktop: lg:pl-40 lg:pr-8 */}
+      <div className="container-spacious max-w-7xl mx-auto px-4 sm:px-8 lg:pl-40 lg:pr-8">
         <div className="flex items-center justify-end h-20 md:h-24">
-          {/* Desktop navigation (visibility handled later) */}
+          {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center">
             <ul className="flex space-x-12">
               <li><NavLink href="/about-us">About us</NavLink></li>
@@ -48,7 +55,7 @@ export function MainNav() {
             </ul>
           </nav>
 
-          {/* Desktop search (visibility handled later) */}
+          {/* Desktop Search Icon */}
           <div className="hidden lg:flex items-center ml-12">
             <Button variant="ghost" size="icon" className="text-white">
               <Search className="h-5 w-5" />
@@ -56,22 +63,32 @@ export function MainNav() {
             </Button>
           </div>
 
-          {/* Mobile menu trigger (visibility handled later) */}
+          {/* Mobile Menu Trigger (Sheet) */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden text-white"> {/* Placeholder class */}
+              <Button variant="ghost" size="icon" className="text-white lg:hidden">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-card border-l border-primary/20">
-              {/* Mobile nav content... */}
-              <div className="flex flex-col h-full p-8">
-                <div className="flex items-center justify-between py-4">
-                  <span className="text-lg font-light tracking-wider text-white">MENU</span>
-                </div>
-                <div className="elegant-line w-full my-8" />
-                <nav className="flex flex-col py-8">
+            {/* ***** CONTENT CHANGES HERE for Accessibility ***** */}
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-card border-l border-primary/20 p-0">
+              {/* Use SheetHeader to group title and description */}
+              <SheetHeader className="p-8 pb-4"> {/* Add some padding */}
+                {/* Replace the old span with SheetTitle */}
+                <SheetTitle className="text-lg font-light tracking-wider text-white text-left">
+                  MENU
+                </SheetTitle>
+                {/* Add a visually hidden description for screen readers */}
+                <SheetDescription className="sr-only">
+                  Main navigation links for the Amara and Partners website.
+                </SheetDescription>
+              </SheetHeader>
+
+              {/* Keep the rest of the mobile nav content */}
+              <div className="p-8 pt-0 flex flex-col h-[calc(100%-theme(space.24))]"> {/* Adjust height calculation if needed */}
+                <div className="elegant-line w-full my-4" />
+                <nav className="flex flex-col py-4 flex-grow"> {/* Allow nav to grow */}
                   <ul className="space-y-10">
                     <li><MobileNavLink href="/about-us">About us</MobileNavLink></li>
                     <li><MobileNavLink href="/services">Services</MobileNavLink></li>
@@ -81,7 +98,7 @@ export function MainNav() {
                     <li><MobileNavLink href="/contact-us">Contact</MobileNavLink></li>
                   </ul>
                 </nav>
-                <div className="mt-auto pb-8">
+                <div className="mt-auto pb-0"> {/* Remove extra padding if header has it */}
                   <Button className="w-full rounded-none bg-primary hover:bg-primary/90 py-6">Get in Touch</Button>
                 </div>
               </div>
@@ -95,6 +112,7 @@ export function MainNav() {
 
 // Helper components (NavLink, MobileNavLink) remain the same
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+  // ... (same as before)
   return (
     <Link
       href={href}
@@ -106,6 +124,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 }
 
 function MobileNavLink({ href, children }: { href: string; children: React.ReactNode }) {
+  // ... (same as before)
   return (
     <Link
       href={href}
