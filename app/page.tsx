@@ -76,11 +76,8 @@ export default function HomePage() {
         className="fixed top-0 left-0 right-0 h-0.5 bg-primary z-50"
         style={{ scaleX: smoothProgress, transformOrigin: "0%" }}
       />
-
-      {/* Vertical logo that changes size on scroll */}
-      <div className="fixed left-12 top-0 bottom-0 z-40 flex items-center pointer-events-none">
-        <VerticalLogo scrollY={scrollY} />
-      </div>
+      {/* Render VerticalLogo here - it will manage its own visibility and positioning */}
+      <VerticalLogo scrollY={scrollY} />
 
       {/* Main navigation */}
       <MainNav />
